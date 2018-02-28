@@ -1,5 +1,11 @@
 #! /bin/bash
 
+if test $# -ne 3; then
+  echo "Parameter not right"
+  echo "Usage: $0 <cvelist dir> <last time> <score threshold> e.g. $0  /home/lc/work/escore_source/cvelist 2017-12-25 8.0"
+  exit 1
+fi
+
 REPO_DIR=$1
 LAST_TIME=$2
 SCORE_THRESHOLD=$3
