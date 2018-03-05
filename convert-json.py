@@ -26,14 +26,26 @@ if __name__ == "__main__":
     print "STATE:", data_json["CVE_data_meta"]["STATE"]
     print 'V3_Score:'
     print '\n'
+
     print 'Affects:'
-    print(data_json["affects"]["vendor"]["vendor_data"][0]["product"]["product_data"])
-    print '\n'
+
+    for affect in data_json["affects"]["vendor"]["vendor_data"][0]["product"]["product_data"]:
+        print "product_name: ", affect["product_name"]
+
+        for version in  affect["version"]["version_data"]:
+            print "version", version["version_affected"], version["version_value"]  
+        print '\n'
+
     print 'Description:'
     print(data_json["description"]["description_data"][0]["value"])
     print '\n'
+
     print 'Problemtype:'
     print(data_json["problemtype"]["problemtype_data"][0]["description"][0]["value"])
     print '\n'
+
     print 'Refrences:'
-    print(data_json["references"]["reference_data"])
+
+    for url in data_json["references"]["reference_data"]:
+        print url["url"]
+    
