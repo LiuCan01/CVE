@@ -9,10 +9,11 @@ def loadjson(file_json):
     return filejson
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         sys.exit("Parameter not right")
 
     file_json = sys.argv[1]
+    cve_score = sys.argv[2]
 
     if os.path.exists(file_json):
         pass
@@ -22,9 +23,10 @@ if __name__ == "__main__":
     data_json = loadjson(file_json)
 
 
+    print '==========================================================================='
     print "ID: ", data_json["CVE_data_meta"]["ID"]
-    print "STATE:", data_json["CVE_data_meta"]["STATE"]
-    print 'V3_Score:'
+    print "STATE: ", data_json["CVE_data_meta"]["STATE"]
+    print 'V3_Score: ', cve_score
     print '\n'
 
     print 'Affects:'
@@ -34,7 +36,7 @@ if __name__ == "__main__":
 
         for version in  affect["version"]["version_data"]:
             print "version", version["version_affected"], version["version_value"]  
-        print '\n'
+    print '\n'
 
     print 'Description:'
     print(data_json["description"]["description_data"][0]["value"])
@@ -49,3 +51,5 @@ if __name__ == "__main__":
     for url in data_json["references"]["reference_data"]:
         print url["url"]
     
+    print '\n'
+    print '\n'

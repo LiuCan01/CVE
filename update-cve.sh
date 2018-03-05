@@ -34,10 +34,12 @@ do
     SCORE_NUM=`/usr/bin/python $CURRENT_DIR/get-severity.py $REPO_DIR/$line`
     if [ `echo " $SCORE_NUM > $SCORE_THRESHOLD"|bc` -eq 1 ];then
         #echo $SCORE_NUM
-        echo $line >> $WORKDIR/cve_list
+        #echo $line >> $WORKDIR/cve_list
+        /usr/bin/python $CURRENT_DIR/convert-json.py $REPO_DIR/$line >> $WORKDIR/report $SCORE_NUM
     fi
 done < $WORKDIR/cve_score_list
 
 
-cp $WORKDIR/cve_list $CURRENT_DIR
+#cp $WORKDIR/cve_list $CURRENT_DIR
+cp $WORKDIR/report $CURRENT_DIR
 rm $WORKDIR -fr
