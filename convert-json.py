@@ -23,7 +23,7 @@ if __name__ == "__main__":
     data_json = loadjson(file_json)
 
 
-    print '==========================================================================='
+    print '============================================================================================'
     print "ID: ", data_json["CVE_data_meta"]["ID"]
     print "STATE: ", data_json["CVE_data_meta"]["STATE"]
     print 'V3_Score: ', cve_score
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     print(data_json["problemtype"]["problemtype_data"][0]["description"][0]["value"])
     print '\n'
 
-    print 'Refrences:'
+    print 'References:'
 
     for url in data_json["references"]["reference_data"]:
         print url["url"]
